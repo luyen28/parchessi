@@ -10,17 +10,16 @@ import javax.swing.JPanel;
 /*
  * POINT DATA DECLARED AT BOTTOM OF FILE!!! In Token Class
  */
-@SuppressWarnings("serial")
 class Player extends JPanel {
 
 	private final int NUM_TOKENS = 4;
-	private int pid;// Player id
+	private final int pid;// Player id
 	private Point p;// Player info,Starting point for pieces for each player
-	private Color color;
-	private Color red = new Color(194, 54, 22);
-	private Color blue = new Color(52, 152, 219);
-	private Color green = new Color(76, 209, 55);
-	private Color yellow = new Color(243, 156, 18);
+	private final Color color;
+	private final Color red = new Color(194, 54, 22);
+	private final Color blue = new Color(52, 152, 219);
+	private final Color green = new Color(76, 209, 55);
+	private final Color yellow = new Color(243, 156, 18);
 	
 	private int offset;
 	public Token[] t;
@@ -81,7 +80,7 @@ class Player extends JPanel {
 	public ArrayList<String> getAvailableTokens() {
 		ArrayList<String> available = new ArrayList<String>();
 		for (int i = 0; i < 4; i++) {
-			if (!t[i].isSafe()) {
+			if (t[i].isSafe()) {
 				available.add(Integer.toString(i));
 			}
 		}
@@ -131,7 +130,7 @@ class Player extends JPanel {
 	public int autoSelectFreeToken() {
 		int tok = -1;
 		for (int k = 0; k < NUM_TOKENS; k++) {
-			if (!t[k].isSafe()) {
+			if (t[k].isSafe()) {
 				// Grab the first not safe token!
 				tok = k;
 			}
@@ -165,7 +164,7 @@ class Player extends JPanel {
 	 */
 	public boolean hasWon() {
 		for (int i = 0; i < 4; i++) {// Return False if any aren't safe
-			if (!t[i].isSafe()) {
+			if (t[i].isSafe()) {
 				return false;
 			} else {
 				System.out.println("Player:hasWon(): Player " + pid + " token "
@@ -191,11 +190,11 @@ class Player extends JPanel {
 		// Do not change SAFE or else
 		private final int SAFE = 63;// Index for all Safe Tokens!
 		private boolean lastEight;
-		private int tokenSize;
+		private final int tokenSize;
 		private int id;
 		private int index;
-		private Point pos;
-		private Color c;
+		private final Point pos;
+		private final Color c;
 
 		// This constructor takes the players individual Corner Parameters so it
 		// knows where each players nest is
@@ -237,7 +236,7 @@ class Player extends JPanel {
 				}
 			} else {
 				if (getPositionIndex() >= 63) {// Else Draw Safe zone
-					drawToken(g, 335 + 0, 355 + 0,col);
+					drawToken(g, 335, 355,col);
 				} else {// Else Draw on Board
 					drawToken(g, getX(), getY(),col);
 				}
@@ -282,13 +281,9 @@ class Player extends JPanel {
 		 * Checks to see if the token is Safe, or not
 		 */
 		public boolean isSafe() {
-			if (index >= SAFE) {
-				// System.out.println("Player:Token:isSafe(): Token " + id +
-				// " is safe");
-				return true;
-			} else {
-				return false;
-			}
+            // System.out.println("Player:Token:isSafe(): Token " + id +
+            // " is safe");
+            return index < SAFE;
 		}
 
 		/*

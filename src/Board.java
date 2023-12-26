@@ -11,16 +11,16 @@ public class Board extends JPanel {
 	private static ArrayList<Point> points;
 	private static int numGamePlayers;
 	private static Player[] p;
-	private Color tile = new Color(0, 0, 0);
-	private Color red = new Color(194, 54, 22);
-	private Color blue = new Color(52, 152, 219);
-	private Color green = new Color(76, 209, 55);
-	private Color yellow = new Color(243, 156, 18);
-	private Color safeBorder = new Color(0, 255, 0);
-	private Color safeFill = new Color(0, 150, 150);
-	private Color base = new Color(0, 179, 21);
-	private Color[] col = {red,blue,yellow,green};
-	private int SIZE =45;
+	private final Color tile = new Color(0, 0, 0);
+	private final Color red = new Color(194, 54, 22);
+	private final Color blue = new Color(52, 152, 219);
+	private final Color green = new Color(76, 209, 55);
+	private final Color yellow = new Color(243, 156, 18);
+	private final Color safeBorder = new Color(0, 255, 0);
+	private final Color safeFill = new Color(0, 150, 150);
+	private final Color base = new Color(0, 179, 21);
+	private final Color[] col = {red,blue,yellow,green};
+	private final int SIZE =45;
 
 	/*
 	 * Board Constructor Constructs a custom board for numPlayers to play

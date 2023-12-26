@@ -47,18 +47,18 @@ class Parchessi extends JFrame {
 		rollButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				Parchessi.roll();
-				while (rollAgain == true) {
+				while (rollAgain) {
 					rollAgain = false;// Set to false imediatley
 					System.out
-							.println("Parchessi:rollButton.addActionListener(): Roll again set to false");
+							.println("Parcheesi:rollButton.addActionListener(): Roll again set to false");
 					System.out
-							.println("Parchessi:rollButton.addActionListener(): Rolling Again, automatically");
+							.println("Parcheesi:rollButton.addActionListener(): Rolling Again, automatically");
 					System.out
-							.println("Parchessi:rollButton.addActionListener(): before Roll: "
+							.println("Parcheesi:rollButton.addActionListener(): before Roll: "
 									+ roll);
 					roll += rollAgain();
 					System.out
-							.println("Parchessi:rollButton.addActionListener():  after Roll: "
+							.println("Parcheesi:rollButton.addActionListener():  after Roll: "
 									+ roll);
 				}
 				Board.movePlayer(turnValue, roll);
@@ -69,7 +69,7 @@ class Parchessi extends JFrame {
 				}
 				rollButton.setEnabled(false);
 				nextTurn.setEnabled(true);
-			}
+			} 
 		});
 		// Initialize Next Turn Button
 		nextTurn = new JButton("Next Turn");

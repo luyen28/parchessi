@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-@SuppressWarnings("serial")
 class Parchessi extends JFrame {
 	private static int turnValue;
 	private static int displayValue;
@@ -49,7 +48,7 @@ class Parchessi extends JFrame {
 			public void actionPerformed(ActionEvent evt) {
 				Parchessi.roll();
 				while (rollAgain) {
-					rollAgain = false;// Set to false imediatley
+					rollAgain = false;// Set to false immediate
 					System.out
 							.println("Parcheesi:rollButton.addActionListener(): Roll again set to false");
 					System.out

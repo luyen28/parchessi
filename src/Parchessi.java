@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.util.Objects;
 import java.util.Random;
 
 import javax.swing.JButton;
@@ -25,10 +26,10 @@ class Parchessi extends JFrame {
 	private static JLabel rollView;
 	private static Board b;
 	private static boolean rollAgain;
-	private Menu m;
-	private JPanel mContainer;
-	private JButton rollButton;
-	private JButton nextTurn;
+	private final Menu m;
+	private final JPanel mContainer;
+	private final JButton rollButton;
+	private final JButton nextTurn;
 
 	/*
 	 * Parcheesi Game Constructor
@@ -69,7 +70,7 @@ class Parchessi extends JFrame {
 				}
 				rollButton.setEnabled(false);
 				nextTurn.setEnabled(true);
-			} 
+			}
 		});
 		// Initialize Next Turn Button
 		nextTurn = new JButton("Next Turn");
@@ -117,7 +118,7 @@ class Parchessi extends JFrame {
 		String x = (String) JOptionPane.showInputDialog(null,
 				"Would you like to play a new game or quit?", "Parcheesi",
 				JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-		if (x == "Play Again!") {
+		if (Objects.equals(x, "Play Again!")) {
 			reset();
 		} else {
 			System.exit(0);
@@ -134,7 +135,7 @@ class Parchessi extends JFrame {
 
 		displayValue = turnValue + 1;
 		rollView.setText("Turn: Player " + displayValue + ";    Dice Roll: ");
-		System.out.println("\n\nParchessi:getNextTurn(): Player "
+		System.out.println("\n\nParcheesi:getNextTurn(): Player "
 				+ displayValue);
 	}
 
@@ -152,12 +153,12 @@ class Parchessi extends JFrame {
 		if (roll == roll2) {
 			// Removed Due to miscalculations 12/3/14
 			// rollAgain = true;
-			// System.out.println("Parchessi:roll(): Roll again set to true");
+			// System.out.println("Parcheesi:roll(): Roll again set to true");
 		}
 		rollView.setText("Turn: Player " + display + ";    Dice Roll: "
-				+ Integer.toString(roll) + " and " + Integer.toString(roll2));
+				+ roll + " and " + roll2);
 
-		System.out.println("Parchessi:roll(): Roll value " + roll + " and "
+		System.out.println("Parcheesi:roll(): Roll value " + roll + " and "
 				+ roll2);
 
 		// Now Update
@@ -171,12 +172,12 @@ class Parchessi extends JFrame {
 	 * Roll Dice Again, can only happen once
 	 */
 	public static int rollAgain() {
-		System.out.println("Parchessi:rollAgain(): entering this method");
+		System.out.println("Parcheesi:rollAgain(): entering this method");
 		Random diceRoller = new Random();
 		int roll1 = diceRoller.nextInt(6) + 1;// Roll first Dice
 		int roll2 = diceRoller.nextInt(6) + 1;// Roll second Dice
 
-		System.out.println("Parchessi:rollAgain(): Roll value " + roll1
+		System.out.println("Parcheesi:rollAgain(): Roll value " + roll1
 				+ " and " + roll2);
 
 		// Now Update
